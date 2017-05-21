@@ -13,6 +13,11 @@ require_once 'common.php';
 	//$typeに定義されている数字が2だったら
 	if($type == 2){
 
+		//common.phpのcreate_dir関数を呼び出し
+		$path = create_dir('../ColorSmallSplit/');
+		//common.phpのcreate_dir関数を呼び出し
+		$path = create_dir('../ColorMaterialSmallSplit/');
+
 		//色を変えて出力
 		//GET送信から受け取った値を$redに定義
 		$red = $_POST['red'];
@@ -22,6 +27,9 @@ require_once 'common.php';
 		$blue = $_POST['blue'];
 
 	}else{
+
+		//common.phpのcreate_dir関数を呼び出し
+		$path = create_dir('../FormSmallSplit/');
 
 		//形を変えて出力
 		//GET送信から受け取った値を$maskに定義

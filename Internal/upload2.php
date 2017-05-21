@@ -1,5 +1,7 @@
 <?php
 
+require_once 'common.php';
+
 	//ファイルのアップロード数を数える
 	$upload_count = count($_FILES['files']['tmp_name']);
 
@@ -12,8 +14,11 @@
 				//日付(月と日)と時間帯(時と分と秒)を取得
 				$date = date('njGis');
 
+				//ソースを作る
+				$path = create_dir('../Source/Photo/');
+
 				//ファイルの保存先とファイル名を定義
-				$uploadfile = '../Source/Photo/'.$date.$_FILES['files']['name'][$count];
+				$uploadfile = $path.$date.$_FILES['files']['name'][$count];
 
 				//エラーがなかった場合
 				if($_FILES['files']['error'][$count] === 0) {

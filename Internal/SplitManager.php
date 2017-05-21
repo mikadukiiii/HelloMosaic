@@ -27,8 +27,14 @@ require_once 'common.php';
 	$image = load_dir("../LargeSplit/");
 
 	//common.phpのcreate_dir関数を呼び出し
-	$path = create_dir("../SmallSplit/split".($count + 1)."/");
-	$change_path = create_dir("../MaterialSmallSplit/split".($count + 1)."/");
+	$path = create_dir('../SmallSplit/');
+
+	//common.phpのcreate_dir関数を呼び出し
+	$path2 = create_dir('../MaterialSmallSplit/');
+
+	//common.phpのcreate_dir関数を呼び出し
+	$path = create_dir($path."split".($count + 1)."/");
+	$change_path = create_dir($path2."split".($count + 1)."/");
 
 	//setting.phpのSmallSplitImage関数を呼び出す
 	SplitImage($image[$count],$path,$image_date,$pattern,$flag);

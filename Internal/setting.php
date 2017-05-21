@@ -227,38 +227,6 @@ require_once 'common.php';
 						$image_size["piece_width"] = floor($image_size["piece_height"] / $image_date['ratio_height'] * $image_date['ratio_width']);
 
 					}
-/*
-			}else if($image_date['tile_width'] <= 100){
-
-					if($pattern == 'Landscape'){
-
-						//指定された横のタイル数が60～100の範囲内の場合
-						//600PPIでA3サイズの最大の横幅が6850なので、それを先ほど求めた縦のタイル数で割り、モザイクピースの高さを求める
-						$image_size["piece_width"] = floor(6850 / $image_size["tile_width"]);
-						//600PPIでA3サイズの最大の横幅が6850なので、それを先ほど求めた横のタイル数で割り、モザイクピースの横幅を求める
-						$image_size["piece_height"] = floor($image_size["piece_width"] / $image_date['ratio_height'] * $image_date['ratio_width']);
-
-					}else if($pattern == 'Portrait'){
-
-						if($ratio_image > 1.0){
-
-							$ratio_size = 9921;
-
-						}else{
-
-							$ratio_size = 6850;
-						}
-
-						//指定された横のタイル数が60～100の範囲内の場合
-						//600PPIでA3サイズの最大の横幅が9921なので、それを先ほど求めた縦のタイル数で割り、モザイクピースの高さを求める
-						$image_size["piece_height"] = floor($ratio_size / $image_size["tile_height"]);
-						//600PPIでA3サイズの最大の横幅が6850なので、それを先ほど求めた横のタイル数で割り、モザイクピースの横幅を求める
-						$image_size["piece_width"] = floor($image_size["piece_height"] / $image_date['ratio_height'] * $image_date['ratio_width']);
-
-					}
-*/
-
-			//}
 
 		//格納した縦のタイル数、モザイクピースの高さ、横幅を返す
 		return $image_size;
@@ -442,6 +410,9 @@ require_once 'common.php';
 
 	//画像を指定された幅と高さで分割する
 	function SplitImage($image,$path,$image_size,$pattern,$flag){
+
+		//common.phpのcreate_dir関数を呼び出し
+		$path = create_dir($path);
 
 		//空の画像を作る
 		$source = @imagecreatefromjpeg($image);
