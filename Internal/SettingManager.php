@@ -35,8 +35,10 @@ require_once 'ParallelManager.php';
 				//common.phpのload_dir関数を呼び出す
 				$random_dir = load_dir($random_photo);
 
-				//配列を結合する
-				$photo_dir = array_merge_recursive($photo_dir ,$random_dir);
+				//Photoファイルに画像をコピーする
+				foreach((array)$random_dir as $random){
+				copy($random , './Source/Photo/'.basename($random));
+				}
 
 			}
 
